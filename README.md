@@ -40,7 +40,7 @@ You will be prompted to choose the number of questions you want to answer. After
 
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See [`LICENSE`](LICENSE) for more information.
 
 ## Contact
 
