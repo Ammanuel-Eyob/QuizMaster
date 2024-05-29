@@ -7,11 +7,28 @@ import time
 app = typer.Typer()
 
 def load_questions_from_yaml(file_path):
+    """Load questions from a YAML file.
+
+    Args:
+        file_path (str): The path to the YAML file.
+
+    Returns:
+        list: A list of questions loaded from the YAML file.
+    """
     with open(file_path, 'r') as file:
         questions_dict = yaml.safe_load(file)
     return questions_dict['questions']
 
 def ask_question(question, options):
+    """Ask a question and get the answer.
+
+    Args:
+        question (str): The question to ask.
+        options (list): The options for the question.
+
+    Returns:
+        str: The answer to the question.
+    """
     question_prompt = {
         'type': 'list',
         'name': 'answer',
@@ -22,6 +39,11 @@ def ask_question(question, options):
     return answer['answer']
 
 def play_quiz(questions):
+    """Play the quiz with the given questions.
+
+    Args:
+        questions (list): The list of questions to ask in the quiz.
+    """
     num_questions = typer.prompt(
         "How many questions would you like to answer? (Choose 5, 10, 15, or 20): ",
         type=int)
@@ -44,6 +66,7 @@ def play_quiz(questions):
 
 @app.command()
 def main():
+    """Main function to start the quiz game."""
     questions = load_questions_from_yaml('questions.yaml')
     while True:
         play_quiz(questions)
